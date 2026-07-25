@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "../services/api";
 
 
 const Dashboard = () => {
@@ -38,34 +38,13 @@ const Dashboard = () => {
 
 
 
-                    const token =
-                    localStorage.getItem("token");
-
-
-
-                    await axios.post(
-
-                        "http://127.0.0.1:5000/api/alerts",
-
-                        {
-                            latitude,
-                            longitude
-                        },
-
-
-                        {
-
-                            headers:{
-
-                                Authorization:
-                                `Bearer ${token}`
-
-                            }
-
-                        }
-
-                    );
-
+                    await API.post(
+    "/alerts",
+    {
+        latitude,
+        longitude
+    }
+);
 
 
                     alert(
